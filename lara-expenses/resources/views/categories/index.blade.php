@@ -14,7 +14,7 @@
                             <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Nueva Categoría</h5>
-                                <a href="#" class="btn btn-primary">Agregar</a>
+                            <a href="{{ route('categories.create') }}" class="btn btn-primary">Agregar</a>
                             </div>
                             </div>
                         </div>
