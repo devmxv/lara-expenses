@@ -25,7 +25,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Vistazo a Gastos</h5>
                                 <p class="card-text">Visualizar los gastos reportados y poder filtrar por diversos criterios</p>
-                                <a href="#" class="btn btn-primary">Vamos!</a>
+                            <a href="" class="btn btn-primary">Vamos!</a>
                             </div>
                             </div>
                         </div>
@@ -57,12 +57,13 @@
                                 <p class="card-text">Registrar, modificar o eliminar categorías de los gastos reportados.
                                     Permite clasificar si fue alguna compra de comida, algo de la casa, de servicios, etc.
                                 </p>
-                                <a href="#" class="btn btn-primary">Entrar</a>
+                            <a href="{{ route('categories.index') }}" class="btn btn-primary">Entrar</a>
                             </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <p class="text-center"><i>Una aplicación desarrollada por Martín Vázquez usando Laravel 5.8</i></p>
             </div>
         </div>
     </div>
