@@ -14,7 +14,7 @@
                             <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Nueva Categoría</h5>
-                            <a href="{{ route('categories.create') }}" class="btn btn-primary">Agregar</a>
+                            <a href="{{ route('categories.create') }}" class="btn btn-lg btn-success">Agregar</a>
                             </div>
                             </div>
                         </div>
@@ -39,12 +39,17 @@
                                     </th>
                                 </thead>
                                 <tbody>
+                                    @foreach($categories as $cat)
                                     <tr>
                                         <td>1</td>
-                                        <td>Test</td>
-                                        <td>3</td>
-                                        <td>Botones</td>
+                                        <td>{{ $cat->name }}</td>
+                                        <td>0</td>
+                                        <td>
+                                        <a href="{{ route('categories.edit', $cat->id) }}" class="btn btn-md btn-secondary">Editar</a>
+                                            <button type="submit" class="btn btn-md btn-danger" style="color: white">Eliminar</button>
+                                        </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
