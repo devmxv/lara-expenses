@@ -67,7 +67,7 @@
                                         </button>
                                         </div>
                                         <div class="modal-body">
-                                        <p class="text-center text-bold">Seguro quieres eliminar esta paymentegoría?</p>
+                                        <p class="text-center text-bold">Seguro quieres eliminar este método de pago?</p>
                                         </div>
                                         <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

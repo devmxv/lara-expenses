@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePaymentRequest;
+use App\Http\Requests\UpdatePaymentRequest;
 use App\Payment;
 use Illuminate\Http\Request;
 
@@ -64,9 +65,9 @@ class PaymentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Payment $payment)
     {
-        //
+        return view('payments.create')->with('payment', $payment);
     }
 
     /**
@@ -76,9 +77,16 @@ class PaymentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePaymentRequest $request, Payment $payment)
     {
-        //
+        $payment->update([
+            'name' => $request->name
+        ]);
+
+        $payment->save();
+
+        session()->flash('success', 'Método de pago actualizado');
+        return redirect(route('payments.index'));
     }
 
     /**
@@ -87,8 +95,11 @@ class PaymentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Payment $payment)
     {
-        //
+        $payment->delete();
+
+        session()->flash('success', 'Método de Pago eliminado correctamente!');
+        return redirect(route('payments.index'));
     }
 }
