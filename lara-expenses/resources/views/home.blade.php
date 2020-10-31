@@ -46,7 +46,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Métodos de Pago</h5>
                                 <p class="card-text">Registrar, modificar o eliminar métodos de pago usados en las compras.</p>
-                                <a href="#" class="btn btn-primary">Entrar</a>
+                            <a href="{{ route('payments.index') }}" class="btn btn-primary">Entrar</a>
                             </div>
                             </div>
                         </div>
