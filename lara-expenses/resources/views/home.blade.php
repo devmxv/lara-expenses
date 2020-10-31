@@ -34,7 +34,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Gastos</h5>
                                 <p class="card-text">Registrar, modificar o eliminar gastos dentro de la aplicación.</p>
-                                <a href="#" class="btn btn-primary">Vamos!</a>
+                            <a href="{{ route('expenses.index') }}" class="btn btn-primary">Vamos!</a>
                             </div>
                             </div>
                         </div>
