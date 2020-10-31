@@ -8,4 +8,9 @@ class Payment extends Model
 {
     //
     protected $fillable = ['name'];
+
+    public function expense()
+    {
+        return $this->hasOne(Expense::class);
+    }
 }

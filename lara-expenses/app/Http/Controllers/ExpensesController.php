@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Expense;
+use App\Payment;
 use Illuminate\Http\Request;
 
 class ExpensesController extends Controller
@@ -24,7 +26,7 @@ class ExpensesController extends Controller
      */
     public function create()
     {
-        return view('expenses.create');
+        return view('expenses.create')->with('expenses', Expense::all())->with('categories', Category::all())->with('payments', Payment::all());
     }
 
     /**
