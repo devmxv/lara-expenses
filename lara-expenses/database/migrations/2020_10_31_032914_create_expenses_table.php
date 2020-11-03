@@ -16,10 +16,10 @@ class CreateExpensesTable extends Migration
         Schema::create('expenses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('description');
-            $table->double('amount');
+            $table->decimal('amount', 6, 2);
             $table->integer('payment_id');
-            $table->integer('user_id');
-            $table->boolean('isDivided');
+            $table->integer('user_id')->nullable();
+            $table->boolean('isDivided')->default('0');
             $table->timestamp('purchase_date');
             $table->text('comments')->nullable();
             $table->timestamps();
