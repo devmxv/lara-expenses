@@ -25,7 +25,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Vistazo a Gastos</h5>
                                 <p class="card-text">Visualizar los gastos reportados y poder filtrar por diversos criterios</p>
-                            <a href="" class="btn btn-primary">Vamos!</a>
+                            <a href="{{ route('reports.index') }}" class="btn btn-primary">Vamos!</a>
                             </div>
                             </div>
                         </div>

@@ -26,3 +26,5 @@ Route::resource('categories', 'CategoriesController');
 Route::resource('payments', 'PaymentsController');
 
 Route::resource('expenses', 'ExpensesController');
+
+Route::get('reports', 'ExpensesController@report')->name('reports.index');

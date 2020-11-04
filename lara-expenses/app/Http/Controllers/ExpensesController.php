@@ -66,7 +66,6 @@ class ExpensesController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -114,5 +113,10 @@ class ExpensesController extends Controller
         session()->flash('success', 'Gasto eliminado correctamente!');
 
         return redirect(route('expenses.index'));
+    }
+
+    public function report()
+    {
+        return view('reports.index')->with('expenses', Expense::all()->sortByDesc('purchase_date'));
     }
 }
