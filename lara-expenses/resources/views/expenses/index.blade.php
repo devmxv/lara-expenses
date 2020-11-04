@@ -22,15 +22,12 @@
                     <div class="p-3"></div>
                     <div class="row">
                         <div class="col-md-12">
-                            @if($expenses->count() == 0)
+                            @if($expenses->count() > 0)
                                 <h4 class="text-center">Últimos gastos registrados</h4>
                                 <table class="table table-bordered mt-3">
                                     <thead>
                                         <th>
                                             #
-                                        </th>
-                                        <th>
-                                          Forma de Pago
                                         </th>
                                         <th>
                                           Fecha
@@ -42,15 +39,16 @@
                                           Monto
                                         </th>
                                         <th>
-                                            Acciones
+                                          Acciones
                                         </th>
                                     </thead>
                                     <tbody>
                                         @foreach($expenses as $expense)
                                         <tr>
                                             <td>{{ $expense->id }}</td>
-                                            <td>{{ $expense->name }}</td>
-                                            <td>0</td>
+                                            <td>{{ date('j F, Y', strtotime($expense->purchase_date)) }}</td>
+                                            <td>{{ $expense->description }}</td>
+                                            <td>${{ $expense->amount }}</td>
                                             <td>
                                                 <a href="{{ route('expenses.edit', $expense->id) }}" class="btn btn-md btn-secondary">Editar</a>
                                                 <button class="btn btn-md btn-danger" onclick="accionEliminar({{ $expense->id }})">Eliminar</button>
@@ -60,9 +58,9 @@
                                     </tbody>
                                 </table>
                                 <!--Modal de eliminación de registro-->
-                                <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                    <form action="" method="POST" id="eliminarexpenseForm">
+                                    <form action="" method="POST" id="deleteExpenseForm">
                                     @method('DELETE')
                                     @csrf
                                     <div class="modal-content">
@@ -101,10 +99,10 @@
 @section('scripts')
 <script>
     function accionEliminar(id){
-        var form = document.getElementById('eliminarexpenseForm');
+        var form = document.getElementById('deleteExpenseForm');
         form.action = '/expenses/' + id;
 
-        $('#modalEliminar').modal('show');
+        $('#deleteModal').modal('show');
     }
 </script>
 @endsection

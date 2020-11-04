@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Expense;
 use App\Http\Requests\CreateExpenseRequest;
+use App\Http\Requests\UpdateExpenseRequest;
 use App\Payment;
 use App\User;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class ExpensesController extends Controller
      */
     public function index()
     {
-        return view('expenses.index')->with('expenses', Expense::all());
+        return view('expenses.index')->with('expenses', Expense::all()->sortByDesc('purchase_date'));
     }
 
     /**
@@ -46,6 +47,7 @@ class ExpensesController extends Controller
             'description' => $request->description,
             'amount' => $request->amount,
             'payment_id' => $request->payment_id,
+            'user_id' => $request->user_id,
             'isDivided' => $is_divided,
             'purchase_date' => $request->purchase_date,
             'category_id' => $request->category_id
@@ -73,9 +75,10 @@ class ExpensesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Expense $expense)
     {
         //
+        return view('expenses.create')->with('expense', $expense)->with('payments', Payment::all())->with('users', User::all())->with('categories', Category::all());
     }
 
     /**
@@ -85,9 +88,17 @@ class ExpensesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateExpenseRequest $request, Expense $expense)
     {
-        //
+        $data = $request->only([
+            'description', 'amount', 'payment_id', 'user_id', 'isDivided', 'purchase_date', 'comments', 'category_id'
+        ]);
+
+        $expense->update($data);
+
+        session()->flash('success', 'Gasto actualizado correctamente!');
+
+        return redirect(route('expenses.index'));
     }
 
     /**
@@ -96,8 +107,12 @@ class ExpensesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Expense $expense)
     {
-        //
+        $expense->delete();
+
+        session()->flash('success', 'Gasto eliminado correctamente!');
+
+        return redirect(route('expenses.index'));
     }
 }

@@ -84,7 +84,7 @@
                               </div>
                               <div class="form-group">
                                 <label for="purchase_date">Fecha de compra:</label>
-                                <input type="text" id="purchase_date" name="purchase_date" class="form-control" value="{{ isset($expense) ? $expense->purchased_date : ''}}"/>
+                                <input type="text" id="purchase_date" name="purchase_date" class="form-control" value="{{ isset($expense) ? $expense->purchase_date : ''}}"/>
                               </div>
                               <div class="form-group">
                                 <label for="comments">Comentarios:</label>
