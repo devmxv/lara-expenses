@@ -26,9 +26,9 @@
                                 <h4 class="text-center">Últimos gastos registrados</h4>
                                 <table class="table table-bordered mt-3">
                                     <thead>
-                                        <th>
+                                        {{-- <th>
                                             #
-                                        </th>
+                                        </th> --}}
                                         <th>
                                           Fecha
                                         </th>
@@ -45,7 +45,7 @@
                                     <tbody>
                                         @foreach($expenses as $expense)
                                         <tr>
-                                            <td>{{ $expense->id }}</td>
+                                            {{-- <td>{{ $expense->id }}</td> --}}
                                             <td>{{ date('j F, Y', strtotime($expense->purchase_date)) }}</td>
                                             <td>{{ $expense->description }}</td>
                                             <td>${{ $expense->amount }}</td>

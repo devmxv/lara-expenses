@@ -19,7 +19,7 @@ class ExpensesController extends Controller
      */
     public function index()
     {
-        return view('expenses.index')->with('expenses', Expense::all()->sortByDesc('purchase_date'));
+        return view('expenses.index')->with('expenses', Expense::orderBy('purchase_date', 'desc')->take(5)->get());
     }
 
     /**
