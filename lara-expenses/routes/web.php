@@ -14,17 +14,19 @@
 use App\Http\Controllers\CategoriesController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('categories', 'CategoriesController');
+    Route::resource('categories', 'CategoriesController');
 
-Route::resource('payments', 'PaymentsController');
+    Route::resource('payments', 'PaymentsController');
 
-Route::resource('expenses', 'ExpensesController');
+    Route::resource('expenses', 'ExpensesController');
+});
 
 Route::get('reports', 'ExpensesController@report')->name('reports.index');
