@@ -11,12 +11,22 @@
                     <h2 class="text-center">Gastos</h2>
                     <div class="row pt-3">
                         <div class="col-sm-12">
-                            <div class="card">
+                          @auth
+                          <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Enviar Reporte de Gastos</h5>
-                            <a href="{{ route('expenses.create') }}" class="btn btn-lg btn-success">Agregar</a>
+                              <h5 class="card-title">Enviar Reporte de Gastos</h5>
+                              <a href="{{ route('expenses.create') }}" class="btn btn-lg btn-success">Agregar</a>
                             </div>
+                          </div>
+                          @endauth
+                          @guest
+                          <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Enviar Reporte de Gastos</h5>
+                              <p><a href="{{ route('login') }}">Inicia sesión</a> para poder enviar reporte y otras operaciones.</p>
                             </div>
+                          </div>
+                          @endguest
                         </div>
                     </div>
                     <div class="p-3"></div>
@@ -108,7 +118,7 @@
                                     </tbody>
                                 </table>
                                 <div class="col-md-12">
-                                  <h5 class="float-right"><strong>Total Pago a TDC Mensual:</strong> ${{ $expenses->sum('amount')}}</h5>
+                                  <h5 class="float-right"><strong>Total Compras:</strong> ${{ $expenses->sum('amount')}}</h5>
                                 </div>
                             @else
                                 <h4 class="text-center">No hay gastos registrados</h4>
@@ -118,7 +128,7 @@
                     <strong>* Sólo aplica pago en efectivo</strong>
 
                 </div>
-            <a style="font-size: 15px;" href="{{ route('home') }}">Regresar a Inicio</a>
+            <a class="pl-4" style="font-size: 15px;" href="{{ route('home') }}">Regresar a Inicio</a>
                 <p class="text-center"><i>Una aplicación desarrollada por Martín Vázquez usando Laravel 5.8</i></p>
             </div>
         </div>

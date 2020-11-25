@@ -26,7 +26,7 @@
                               </div>
                               <div class="form-group">
                                 <label for="amount">Monto:</label>
-                                <input type="number" name="amount" class="form-control" value="{{ isset($expense) ? $expense->amount : ''}}"/>
+                                <input type="number" step="any" name="amount" class="form-control" value="{{ isset($expense) ? $expense->amount : ''}}"/>
                               </div>
                               <div class="form-group">
                                 <label for="payment_method">Método de Pago</label>
